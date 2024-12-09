@@ -1,0 +1,112 @@
+start
+  = program
+  ;
+
+program
+  = statement*
+
+statement
+  = assignment
+  / expression_statement
+  / if_statement
+  / while_statement
+  / for_statement
+  / array_declaration
+  / function_definition
+  ;
+
+assignment
+  = variable "=" expression
+  ;
+
+expression_statement
+  = expression
+  ;
+
+if_statement
+  = "if" "(" expression ")" block ("else" block)?
+  ;
+
+while_statement
+  = 'while' "(" expression ")" block
+  ;
+
+for_statement
+  = "for" "(" assignment? ";" expression? ";" assignment? ")" block
+  ;
+
+array_declaration
+  = "array" variable "[" expression "]" "=" expression
+  ;
+
+function_definition
+  = "function" variable "(" parameters? ")" block
+  ;
+
+parameters
+  = parameter ("," parameter)*
+  ;
+
+parameter
+  = variable
+  ;
+
+block
+  = "{" statement* "}"
+  ;
+
+expression
+  = additive
+  / relational
+  / logical
+  / function_call
+  / variable
+  / integer
+  / array_access
+  ;
+
+additive
+  = multiplicative ("+" multiplicative)*
+  / multiplicative ("-" multiplicative)*
+  ;
+
+multiplicative
+  = primary ("*" primary)*
+  / primary ("/" primary)*
+  ;
+
+primary
+  = integer
+  / variable
+  / function_call
+  / "(" expression ")"
+  ;
+
+relational
+  = expression ("<" / ">" / "==" / "!=") expression
+  ;
+
+logical
+  = expression ("&&" / "||") expression
+  ;
+
+function_call
+  = variable "(" arguments? ")"
+  ;
+
+arguments
+  = expression ("," expression)*
+  ;
+
+array_access
+  = variable "[" expression "]"
+  ;
+
+variable
+  = [a-zA-Z_][a-zA-Z0-9_]*
+  ;
+
+integer
+  = [0-9]+
+  ;
+
