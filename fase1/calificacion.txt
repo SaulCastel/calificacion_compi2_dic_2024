@@ -4,6 +4,7 @@ start
 
 program
   = statement*
+  ;
 
 statement
   = assignment
