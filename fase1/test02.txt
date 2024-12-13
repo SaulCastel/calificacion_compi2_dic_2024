@@ -1,0 +1,25 @@
+// Test 01
+list
+	= word|.., _ "," _|
+	/ word|0.., _ "," _|
+	/ word|..1, _ "," _|
+	/ word|0..1, _ "," _|
+	/ num:number word|num..num, _ "," _|
+	/ num :number word|num|
+	/ word |  2 |
+	/ word |3, _ (';' / '/' / '|') _ |
+
+
+number
+	= [0-9]+;
+
+/*
+comentario
+*/
+
+word
+	= $[a-z]i+ &'.'
+
+_
+	= [ \t]*
+	;

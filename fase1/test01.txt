@@ -1,0 +1,60 @@
+Expression
+	= Spacing Rule+ EndOfFile
+
+Rule
+	= title:QuestionTitle? stem:QuestionStem questionType:SpecificQuestion Space* EndOfLine* 
+   	/ Comment EndOfLine*
+
+SpecificQuestion "(specific question)"
+	= TrueFalseQuestion / MCQuestion
+ 
+TrueFalseQuestion "True/False Question"
+	= '{' isTrue:('T'/'F') '}' 
+
+MCQuestion "Multiple-choice Question"
+  	= '{' EndOfLine choices:(Choice)+ '}'
+
+Choice "Choice"
+  	= CorrectChoice / IncorrectChoice
+  
+CorrectChoice "(correct choice)"
+  	= '=' correctChoice:RichText EndOfLine
+
+IncorrectChoice "(correct choice)"
+	= '~' incorrectChoice:RichText EndOfLine
+
+QuestionTitle
+	= '::' title:Title '::'
+  
+QuestionStem
+	= stem:RichText 
+
+Text "(text)"
+	= [ A-Za-z0-9.+]
+
+RichText
+	= Text* 
+
+Title
+  	= Text*
+
+_ "whitespace"
+  	= [ \t]*
+  
+Spacing 
+  	= (Space / Comment)*
+  	
+Comment "(comment)"
+	= '//' (!EndOfLine .)* EndOfLine 
+
+Space "(space)"
+	= ' ' / '\t'
+
+EndOfLine "(end of line)"
+	= '\r\n' / '\n' / '\r'
+
+EndOfFile 
+	= !.
+
+Assertion "Extra rule"
+	= $Text & EndOfLine
