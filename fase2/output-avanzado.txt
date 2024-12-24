@@ -1,13 +1,5 @@
 a
-c
-d
-d
-c
-z
-y
-x
--
--
--
+cddc
+zyx---
 01
 EOF
