@@ -1,0 +1,65 @@
+{
+    integer :: conteo = 3
+
+    contains
+
+    function obtenerNumero(str) result(num)
+        character(:), allocatable :: str
+        integer :: num
+
+        read(str, *) num
+    end function obtenerNumero
+}
+
+pruebas
+    =   "a"
+        (num:[0-9] {
+            character(:), allocatable :: res
+
+            res = '.'//num//'.'
+        })
+    /   "b"|{
+            integer :: res
+
+            res = conteo
+        }|
+    /   "c"|{
+            integer :: res
+
+            res = conteo
+        }, ', '|
+    /   "d"|{
+            integer :: res
+
+            res = 1
+        }..{
+            integer :: res
+
+            res = 3
+        }|
+    /   "e"|{
+            integer :: res
+
+            res = 1
+        }..{
+            integer :: res
+
+            res = 3
+        }, ', '|
+    / "f" n:num !{
+        logical :: res
+
+        res = n < 100
+    }
+    / "g" n:num &{
+        logical :: res
+
+        res = n > 100
+    }
+
+num
+    = n:[0-9]+ {
+        integer :: res
+
+        res = obtenerNumero(n)
+    }
