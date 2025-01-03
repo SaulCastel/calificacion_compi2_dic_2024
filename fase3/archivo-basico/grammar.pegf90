@@ -1,0 +1,25 @@
+emparedado
+    = "pan" _ P:proteina _ V1:verdes _ V2:vegetales _ "pan" {
+        character(len=:), allocatable :: res
+
+        if (P == "tocino" .and. V1 == "lechuga" .and. V2 == "tomate") then
+            res = "Un sandwich BLT"
+        else if (P == "pollo" .and. V1 == "espinaca" .and. V2 == "cebolla") then
+            res = "Un sandwich de pollo"
+        else if (P == "embutido" .and. V1 == "guacamol" .and. V2 == "repollo") then
+            res = "Un shuco"
+        else
+            res = "Pan desconocido"
+        end if
+    }
+
+proteina
+    = "tocino" / "pollo" / "embutido"
+
+verdes
+    = "lechuga" / "espinaca" / "guacamol"
+
+vegetales
+    = "tomate" / "repollo" / "cebolla"
+
+_ = [ ]+
