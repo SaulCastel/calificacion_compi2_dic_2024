@@ -31,7 +31,7 @@ module sandwiches_suite
         input = getFileContents(filePrefix//'blt.txt')
 
         result = parse(input)
-        call check(error, 'Un sandwich BLT', result)
+        call check(error, result, 'Un sandwich BLT')
         if (ALLOCATED(error)) return
     end subroutine test_blt
 
@@ -43,7 +43,7 @@ module sandwiches_suite
         input = getFileContents(filePrefix//'pollo.txt')
 
         result = parse(input)
-        call check(error, 'Un sandwich de pollo', result)
+        call check(error, result, 'Un sandwich de pollo')
         if (ALLOCATED(error)) return
     end subroutine test_pollo
 
@@ -55,7 +55,7 @@ module sandwiches_suite
         input = getFileContents(filePrefix//'shuco.txt')
 
         result = parse(input)
-        call check(error, 'Un shuco', result)
+        call check(error, result, 'Un shuco')
         if (ALLOCATED(error)) return
     end subroutine test_shuco
 
@@ -67,7 +67,7 @@ module sandwiches_suite
         input = getFileContents(filePrefix//'desconocido.txt')
 
         result = parse(input)
-        call check(error, 'Pan desconocido', result)
+        call check(error, result, 'Pan desconocido')
         if (ALLOCATED(error)) return
     end subroutine test_desconocido
 
